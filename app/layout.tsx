@@ -6,8 +6,8 @@ import "./globals.css";
 const inter: any = Inter({ subsets: ["latin"] });
 
 export const metadata: any = {
-	title: "Junior Developer Purity Test",
-	description: "A fun test to see how pure of a junior developer you are.",
+	title: "Developer Purity Test",
+	description: "A fun test to see how pure of a developer you are.",
 };
 
 export default function RootLayout({
