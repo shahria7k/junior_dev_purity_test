@@ -163,7 +163,7 @@ export default function Home() {
 							</button>
 						</div>
 					) : (
-						<form id="form" className="flex flex-col items-center justify-center gap-4" onSubmit={calculateScore}>
+						<form id="form" className="flex flex-col items-center justify-center gap-4 mb-96" onSubmit={calculateScore}>
 							<h2 className="text-3xl font-semibold">Check all that applies to you</h2>
 							<p className="text-sm opacity-50">
 								Note: This is not a to-do list. Completion of all items is neither expected nor required.
