@@ -157,7 +157,7 @@ export default function Home() {
 							</h2>
 							<button
 								onClick={() => setShowScore(false)}
-								className="px-8 py-4 text-white border-white border rounded-lg backdrop:blur-xl drop-shadow-2xl mb-96 dark:border-neutral-800 dark:bg-zinc-800/30 dark:text-neutral-100/80"
+								className="px-8 py-4 dark:text-white dark:border-white border rounded-lg backdrop:blur-xl drop-shadow-2xl mb-96 bg-black text-white"
 							>
 								Retake the test
 							</button>
@@ -178,7 +178,7 @@ export default function Home() {
 							</div>
 							<button
 								type="submit"
-								className="px-8 py-4 text-white border-white border rounded-lg backdrop:blur-xl drop-shadow-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:text-neutral-100/80"
+								className="px-8 py-4 dark:text-white dark:border-white bg-black text-white border rounded-lg backdrop:blur-xl drop-shadow-2xl "
 							>
 								Calculate Score
 							</button>
