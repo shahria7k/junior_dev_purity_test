@@ -112,7 +112,6 @@ export default function Home() {
 		const form = e.currentTarget;
 		const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
 		const score = checkboxes.length;
-		alert(`Your purity score is ${score} out of ${checklistItems.length}`);
 		setScore(score);
 		setShowScore(true);
 	};
