@@ -1,5 +1,5 @@
 "use client";
-import { Head } from "next/document";
+
 import Image from "next/image";
 import { useState } from "react";
 const checklistItems = [
