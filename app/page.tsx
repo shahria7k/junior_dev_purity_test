@@ -1,4 +1,5 @@
 "use client";
+import { Head } from "next/document";
 import Image from "next/image";
 import { useState } from "react";
 const checklistItems = [
@@ -117,73 +118,79 @@ export default function Home() {
 	};
 
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24">
-			<div className=" z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-				<p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-					Junior Developer Purity Test
-				</p>
-				<div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-					<a
-						className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-						href="https://mindquest.studio"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						By{" "}
-						<Image
-							src="/mindquest-logo.png"
-							alt="mindquest logo"
-							// className="dark:invert"
-							width={30}
-							height={30}
-							priority
-						/>
-						MindQuest Studio
-					</a>
-				</div>
-			</div>
-
-			<div className=" h-[400px] relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-				<h1 className="text-5xl">Junior Developer Purity Test</h1>
-			</div>
-
-			<div>
-				{/* checklist form */}
-				{showScore ? (
-					<div className="flex flex-col justify-center items-center gap-y-10">
-						<h2 className="text-3xl font-semibold">
-							Your purity score is {score} out of {checklistItems.length}
-						</h2>
-						<button
-							onClick={() => setShowScore(false)}
-							className="px-8 py-4 text-white border-white border rounded-lg backdrop:blur-xl drop-shadow-2xl"
+		<>
+			<Head>
+				<title>Junior Developer Purity Test</title>
+				<meta name="description" content="A fun test to check your junior developer purity" />
+			</Head>
+			<main className="flex min-h-screen flex-col items-center justify-between p-24">
+				<div className=" z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
+					<p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+						Junior Developer Purity Test
+					</p>
+					<div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
+						<a
+							className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
+							href="https://mindquest.studio"
+							target="_blank"
+							rel="noopener noreferrer"
 						>
-							Retake the test
-						</button>
+							By{" "}
+							<Image
+								src="/mindquest-logo.png"
+								alt="mindquest logo"
+								// className="dark:invert"
+								width={30}
+								height={30}
+								priority
+							/>
+							MindQuest Studio
+						</a>
 					</div>
-				) : (
-					<form id="form" className="flex flex-col items-center justify-center gap-4" onSubmit={calculateScore}>
-						<h2 className="text-3xl font-semibold">Check all that applies to you</h2>
-						<p className="text-sm opacity-50">
-							Note: This is not a to-do list. Completion of all items is neither expected nor required.
-						</p>
-						<div className="grid grid-cols-1 gap-4 max-w-lg">
-							{checklistItems.map((item, index) => (
-								<label key={index} className="flex items-center gap-2">
-									<input type="checkbox" name="checklist" value={item} />
-									<span>{item}</span>
-								</label>
-							))}
+				</div>
+
+				<div className=" h-[400px] relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
+					<h1 className="text-5xl">Junior Developer Purity Test</h1>
+				</div>
+
+				<div>
+					{/* checklist form */}
+					{showScore ? (
+						<div className="flex flex-col justify-center items-center gap-y-10">
+							<h2 className="text-3xl font-semibold">
+								Your purity score is {score} out of {checklistItems.length}
+							</h2>
+							<button
+								onClick={() => setShowScore(false)}
+								className="px-8 py-4 text-white border-white border rounded-lg backdrop:blur-xl drop-shadow-2xl"
+							>
+								Retake the test
+							</button>
 						</div>
-						<button
-							type="submit"
-							className="px-8 py-4 text-white border-white border rounded-lg backdrop:blur-xl drop-shadow-2xl "
-						>
-							Calculate Score
-						</button>
-					</form>
-				)}
-			</div>
-		</main>
+					) : (
+						<form id="form" className="flex flex-col items-center justify-center gap-4" onSubmit={calculateScore}>
+							<h2 className="text-3xl font-semibold">Check all that applies to you</h2>
+							<p className="text-sm opacity-50">
+								Note: This is not a to-do list. Completion of all items is neither expected nor required.
+							</p>
+							<div className="grid grid-cols-1 gap-4 max-w-lg">
+								{checklistItems.map((item, index) => (
+									<label key={index} className="flex items-center gap-2">
+										<input type="checkbox" name="checklist" value={item} />
+										<span>{item}</span>
+									</label>
+								))}
+							</div>
+							<button
+								type="submit"
+								className="px-8 py-4 text-white border-white border rounded-lg backdrop:blur-xl drop-shadow-2xl "
+							>
+								Calculate Score
+							</button>
+						</form>
+					)}
+				</div>
+			</main>
+		</>
 	);
 }
