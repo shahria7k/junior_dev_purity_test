@@ -155,6 +155,8 @@ export default function Home() {
 							<h2 className="text-3xl font-semibold">
 								Your purity score is {score} out of {checklistItems.length}
 							</h2>
+							<p className="text-sm opacity-50">Share your score with friends!</p>
+							<ShareOnSocialMedia result={score} />
 							<button
 								onClick={() => setShowScore(false)}
 								className="px-8 py-4 dark:text-white dark:border-white border rounded-lg backdrop:blur-xl drop-shadow-2xl mb-96 bg-black text-white"
@@ -189,3 +191,24 @@ export default function Home() {
 		</>
 	);
 }
+const ShareOnSocialMedia = ({ result }: { result: number }) => {
+	const url = "https://juniordevpuritytest-shahria-jaman-khans-projects.vercel.app/";
+	const text = `I scored ${result} on the Junior Developer Purity Test! How pure are you?`;
+	const hashtags = "juniordev, coding, webdev";
+	const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
+	const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+	const linkedinUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
+	return (
+		<div className="flex gap-4  dark:invert">
+			<a href={twitterUrl} target="_blank" rel="noopener noreferrer">
+				<Image src="/twitter.svg" alt="Twitter" width={24} height={24} />
+			</a>
+			<a href={facebookUrl} target="_blank" rel="noopener noreferrer">
+				<Image src="/facebook.svg" alt="Facebook" width={24} height={24} />
+			</a>
+			<a href={linkedinUrl} target="_blank" rel="noopener noreferrer">
+				<Image src="/linkedin.svg" alt="LinkedIn" width={24} height={24} />
+			</a>
+		</div>
+	);
+};
