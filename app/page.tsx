@@ -136,8 +136,10 @@ export default function Home() {
 			<div>
 				{/* checklist form */}
 				<form id="form" className="flex flex-col items-center justify-center gap-4">
-					<h2 className="text-3xl font-semibold">Junior Developer Purity Test</h2>
-					<p className="text-sm opacity-50">Check all that apply to you:</p>
+					<h2 className="text-3xl font-semibold">Check all that applies to you</h2>
+					<p className="text-sm opacity-50">
+						Note: This is not a to-do list. Completion of all items is neither expected nor required.
+					</p>
 					<div className="grid grid-cols-1 gap-4 max-w-lg">
 						{checklistItems.map((item, index) => (
 							<label key={index} className="flex items-center gap-2">
