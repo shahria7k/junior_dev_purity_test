@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
 const checklistItems = [
 	"Debugged code at 2 AM because you 'just couldn't sleep.'",
 	"Enjoy writing and testing algorithms.",
@@ -102,6 +104,18 @@ const checklistItems = [
 	"Debugged a memory leak.",
 ];
 export default function Home() {
+	const [score, setScore] = useState(0);
+	const [showScore, setShowScore] = useState(false);
+	const calculateScore = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const form = e.currentTarget;
+		const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+		const score = checkboxes.length;
+		alert(`Your purity score is ${score} out of ${checklistItems.length}`);
+		setScore(score);
+		setShowScore(true);
+	};
+
 	return (
 		<main className="flex min-h-screen flex-col items-center justify-between p-24">
 			<div className=" z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -135,26 +149,40 @@ export default function Home() {
 
 			<div>
 				{/* checklist form */}
-				<form id="form" className="flex flex-col items-center justify-center gap-4">
-					<h2 className="text-3xl font-semibold">Check all that applies to you</h2>
-					<p className="text-sm opacity-50">
-						Note: This is not a to-do list. Completion of all items is neither expected nor required.
-					</p>
-					<div className="grid grid-cols-1 gap-4 max-w-lg">
-						{checklistItems.map((item, index) => (
-							<label key={index} className="flex items-center gap-2">
-								<input type="checkbox" name="checklist" value={item} />
-								<span>{item}</span>
-							</label>
-						))}
+				{showScore ? (
+					<div className="flex flex-col justify-center items-center gap-y-10">
+						<h2 className="text-3xl font-semibold">
+							Your purity score is {score} out of {checklistItems.length}
+						</h2>
+						<button
+							onClick={() => setShowScore(false)}
+							className="px-8 py-4 text-white border-white border rounded-lg backdrop:blur-xl drop-shadow-2xl"
+						>
+							Retake the test
+						</button>
 					</div>
-					<button
-						type="submit"
-						className="px-8 py-4 text-white border-white border rounded-lg backdrop:blur-xl drop-shadow-2xl "
-					>
-						Calculate Score
-					</button>
-				</form>
+				) : (
+					<form id="form" className="flex flex-col items-center justify-center gap-4" onSubmit={calculateScore}>
+						<h2 className="text-3xl font-semibold">Check all that applies to you</h2>
+						<p className="text-sm opacity-50">
+							Note: This is not a to-do list. Completion of all items is neither expected nor required.
+						</p>
+						<div className="grid grid-cols-1 gap-4 max-w-lg">
+							{checklistItems.map((item, index) => (
+								<label key={index} className="flex items-center gap-2">
+									<input type="checkbox" name="checklist" value={item} />
+									<span>{item}</span>
+								</label>
+							))}
+						</div>
+						<button
+							type="submit"
+							className="px-8 py-4 text-white border-white border rounded-lg backdrop:blur-xl drop-shadow-2xl "
+						>
+							Calculate Score
+						</button>
+					</form>
+				)}
 			</div>
 		</main>
 	);
