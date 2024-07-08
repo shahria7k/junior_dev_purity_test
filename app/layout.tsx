@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter: any = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+export const metadata: any = {
 	title: "Junior Developer Purity Test",
 	description: "A fun test to see how pure of a junior developer you are.",
 };
